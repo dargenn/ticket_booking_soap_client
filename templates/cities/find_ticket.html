@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Widok biletu</title>
+</head>
+<body>
+Potwierdzenie odebrania biletu:
+<ul>
+    <li>Kod: {{ ticket.code }}</li>
+    <li>Lot z: {{ ticket.flight.from.name }}</li>
+    <li>Lot do: {{ ticket.flight.to.name }}</li>
+    <li>Imię i nazwisko pasażera: {{ ticket.passenger.firstName }} {{ ticket.passenger.lastName }}</li>
+    <li>Data: {{ ticket.flight.departureDate | date:'d.m.Y' }}</li>
+    <li>Godzina: {{ ticket.flight.departureHour | date:'H:i' }}</li>
+</ul>
+
+Kliknij, aby odebrać potwierdzenie:
+<a href="{% url 'find_ticket_confirmation' %}?flight_code={{ ticket.code }}"><input type="button" value="Pobierz potwierdzenie rezerwacji"/></a>
+</body>
+</html>

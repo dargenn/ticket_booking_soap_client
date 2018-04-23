@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zamówienie biletu</title>
+</head>
+<body>
+Lot numer: {{ flight.id }} <br/>
+Lot z: {{ flight.from.name }} <br/>
+Lot do: {{ flight.to.name }} <br/>
+Data: {{ flight.departureDate | date:'d.m.Y' }} <br/>
+Godzina: {{ flight.departureHour | date:'H:i' }}<br />
+<a href="{% url 'confirm_ticket' %}?flight_id={{ flight.id }}"><input type="button" value="POTWIERDŹ KUPNO BILETU"/></a>
+</body>
+</html>

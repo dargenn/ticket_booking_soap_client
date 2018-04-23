@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Potwierdzenie kupna biletu</title>
+</head>
+<body>
+Potwierdzono kupno biletu. Twój unikalny kod biletu to: {{ flight_code }} <br />
+Kliknij, aby odebrać potwierdzenie:
+<a href="{% url 'find_ticket_confirmation' %}?flight_code={{ flight_code }}"><input type="button" value="Pobierz potwierdzenie rezerwacji"/></a>
+</body>
+</html>

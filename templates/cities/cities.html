@@ -1,0 +1,41 @@
+<html>
+<head></head>
+<body>
+<form method="get" action="search">
+    Lot z:
+    <select name="from" required>
+        {% for city in cities %}
+            <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+    </select>
+
+    Lot do:
+    <select name="to" required>
+        {% for city in cities %}
+            <option value="{{ city }}">{{ city }}</option>
+        {% endfor %}
+    </select>
+
+    Dzień:
+    <input type="date" name="date" required/>
+
+    Godzina:
+    <input type="time" name="time" required/>
+
+    <input type="submit" value="Wyszukaj"/>
+</form>
+
+<ul>
+    {% for flight in flights %}
+        <li>
+            {{ flight.from.name }} - {{ flight.to.name }}, {{ flight.departureDate | date:'d.m.Y' }}
+            o {{ flight.departureHour | date:'H:i' }}
+            <a href="{% url 'buy_ticket' %}?flight_id={{ flight.id }}">KUP BILET</a>
+        </li>
+    {% endfor %}
+</ul>
+
+Wyszukaj bilet po unikalnym kodzie:
+<form method="get" action="find_ticket"><input name="code" type="text"/><input type="submit" value="Wyszukaj"/></form>
+</body>
+</html>
